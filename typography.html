@@ -1,16 +1,250 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
-    <title>Typography</title>
+    <title>Productos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700,800,900,900i%7CRoboto:400%7CRubik:100,400,700">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
+    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;} 
+        .container {
+          width: 100%;
+          padding: 40px 60px;
+          background-color: #f5f1f5;
+          box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #e4b6d5;
+
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        h2{
+            text-align: center;
+            color: #666;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;            
+            justify-content: space-around;
+        }
+        .product {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+            transition: transform 0.3s, box-shadow 0.3s;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 420px; /* Ajusta según el contenido */
+        }
+
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+            height: 200px;
+        }
+        .product h2 {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+            
+        }
+        .product p {
+            font-size: 16px;
+            color: #666;
+
+            margin: 10px 0;
+        }
+        .product button {
+            background-color: #5cb85c;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .product button:hover {
+            background-color: #4cae4c;
+        }
+        .cart-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .cart-button:hover {
+            background-color: #0056b3;
+        } 
+
+        .carrito-dropdown {
+          display: none;
+          position: absolute;
+          right: 0;
+          top: 120%;
+          background-color: white;
+          border: 1px solid #ddd;
+          padding: 15px;
+          width: 350px;
+          max-height: 400px;
+          overflow-y: auto;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          z-index: 999;
+          border-radius: 8px;
+        }
+
+        .carrito-dropdown.show {
+          display: block;
+          width: 700px; 
+        }
+
+        #cart-table-dropdown {
+          border-collapse: separate;
+          border-spacing: 10px 10px;
+          width: 400px; /* Aumenta este valor para que sea más ancho */
+
+        }
+
+        #cart-table-body-dropdown td {
+          padding: 10px 15px;
+          width: 400px; /* o el ancho que prefieras */
+        }
+
+        #cart-table-dropdown img {
+          max-width: 80px;
+          max-height: 80px;
+          border-radius: 8px;
+        }
+
+
+
+    </style>
+    <script>
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product.name} ha sido añadido al carrito.`);
+        }
+        
+        
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const carritoBtn = document.getElementById('carrito-btn');
+          const carritoPanel = document.getElementById('carrito-panel');
+          const cartTableBodyDropdown = document.getElementById('cart-table-body-dropdown');
+          const totalDropdown = document.getElementById('total-dropdown');
+        
+          carritoBtn.addEventListener('click', () => {
+            carritoPanel.classList.toggle('show');
+            if (carritoPanel.classList.contains('show')) {
+              cargarCarritoEnDropdown();
+            }
+          });
+        
+          document.addEventListener('click', (e) => {
+            if (!carritoBtn.contains(e.target) && !carritoPanel.contains(e.target)) {
+              carritoPanel.classList.remove('show');
+            }
+          });
+        
+          function cargarCarritoEnDropdown() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cartTableBodyDropdown.innerHTML = '';
+          
+            if (cart.length === 0) {
+              cartTableBodyDropdown.innerHTML = '<tr><td colspan="4">Tu carrito está vacío.</td></tr>';
+              totalDropdown.innerText = '';
+              return;
+            }
+          
+            let total = 0;
+            cart.forEach((product, index) => {
+              total += product.price;
+            
+              let row = document.createElement('tr');
+            
+              let imgCell = document.createElement('td');
+              imgCell.innerHTML = `<img src="${product.image}" alt="${product.name}" style="max-width: 60px; max-height: 60px;">`;
+            
+              let nameCell = document.createElement('td');
+              nameCell.textContent = product.name;
+            
+              let priceCell = document.createElement('td');
+              priceCell.textContent = `$${product.price.toFixed(2)}`;
+            
+              let actionCell = document.createElement('td');
+              let removeBtn = document.createElement('button');
+              removeBtn.textContent = 'Eliminar';
+              removeBtn.className = 'remove-button';
+              removeBtn.onclick = () => {
+                event.stopPropagation();  // Evita que el click burbujee hacia otros handlers
+                removeItem(index);
+                cargarCarritoEnDropdown();
+              };
+              actionCell.appendChild(removeBtn);
+            
+              row.appendChild(imgCell);
+              row.appendChild(nameCell);
+              row.appendChild(priceCell);
+              row.appendChild(actionCell);
+            
+              cartTableBodyDropdown.appendChild(row);
+            });
+          
+            totalDropdown.innerText = `Total: $${total.toFixed(2)}`;
+          }
+        
+          function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+          }
+        
+        });
+
+
+
+    </script>
   </head>
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
@@ -22,7 +256,7 @@
         <p>Loading...</p>
       </div>
     </div>
-    <div class="page"><a class="section section-banner d-none d-xl-flex" href="https://www.templatemonster.com/website-templates/monstroid2.html" style="background-image: url(images/banner/background-04-1920x60.jpg); background-image: -webkit-image-set( url(images/banner/background-04-1920x60.jpg) 1x, url(images/banner/background-04-3840x120.jpg) 2x )" target="_blank"><img src="images/banner/foreground-04-1600x60.png" srcset="images/banner/foreground-04-1600x60.png 1x, images/banner/foreground-04-3200x120.png 2x" alt="" width="1600" height="310"></a>
+    <div class="page"><!--a class="section section-banner d-none d-xl-flex" href="https://www.templatemonster.com/website-templates/monstroid2.html" style="background-image: url(images/banner/background-04-1920x60.jpg); background-image: -webkit-image-set( url(images/banner/background-04-1920x60.jpg) 1x, url(images/banner/background-04-3840x120.jpg) 2x )" target="_blank"><img src="images/banner/foreground-04-1600x60.png" srcset="images/banner/foreground-04-1600x60.png 1x, images/banner/foreground-04-3200x120.png 2x" alt="" width="1600" height="310"></a-->
       <!-- Page Header-->
       <header class="section page-header">
         <!-- RD Navbar-->
@@ -35,196 +269,203 @@
                   <!-- RD Navbar Toggle-->
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand"><a href="index.html"><img class="brand-logo-light" src="images/logo-inverse-415x103.png" alt="" width="207" height="51"/></a></div>
+                  <div class="rd-navbar-brand"><a href="index.html"><img class="brand-logo-light" src="images/logo1.png" alt="" width="207" height="51"/></a></div>
                 </div>
                 <div class="rd-navbar-main-element">
                   <div class="rd-navbar-nav-wrap">
                     <!-- RD Navbar Nav-->
-                    <ul class="rd-navbar-nav">
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Home</a>
+                    <!--ul class="rd-navbar-nav">
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Inicio</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="about-us.html">About Us</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="about-us.html">Nosotros</a>
                       </li>
-                      <li class="rd-nav-item active"><a class="rd-nav-link" href="typography.html">Typography</a>
+                      <li class="rd-nav-item active"><a class="rd-nav-link" href="typography.html">Productos</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="contacts.html">Contacts</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="contacts.html">Contactos</a>
                       </li>
-                    </ul><a class="button button-primary button-sm" href="#">Donate</a>
+                    </ul><a class="button button-primary button-sm" href="#">Arma tu PC</a-->
+
+                      <ul class="rd-navbar-nav">
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Inicio</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="about-us.html">Nosotros</a></li>
+                        <li class="rd-nav-item active"><a class="rd-nav-link" href="typography.html">Productos</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="contacts.html">Contactos</a></li>
+                      </ul>                                            
+                      
+                      <!-- Botón "Arma tu PC" -->
+                      <a class="button button-primary button-sm" href="#">Arma tu PC</a>
+
                   </div>
-                </div><a class="button button-primary button-sm" href="#">Donate</a>
+                </div>
+                <!-- Ícono del carrito -->
+                <!--div class="d-inline-block align-middle me-3">
+                  <a href="carrito.html" class="rd-nav-link" title="Ver carrito" style="font-size: 20px;">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>
+                </div-->
+                <!-- Icono del carrito -->
+                <!-- Botón de carrito -->
+                <div class="d-inline-block align-middle me-3 position-relative">
+                  <button id="carrito-btn" class="rd-nav-link" title="Ver carrito" style="font-size: 20px; background: none; border: none;">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                
+                  <!-- Panel desplegable del carrito -->
+                  <div id="carrito-panel" class="carrito-dropdown">
+                      <h5>Tu carrito</h5>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Acción</th>
+                          </tr>
+                        </thead>
+                        <tbody id="cart-table-body-dropdown">
+                          <tr><td colspan="4">Tu carrito está vacío.</td></tr>
+                        </tbody>
+                      </table>
+                      <div id="total-dropdown" class="total"></div>
+                  </div>
+                </div>
+
+
+                
               </div>
             </div>
           </nav>
         </div>
       </header>
-      <section class="parallax-container" data-parallax-img="images/bg-breadcrumbs-about.jpg">
-        <div class="parallax-content breadcrumbs-custom context-dark">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-12 col-lg-9">
-                <h2 class="breadcrumbs-custom-title">Typography</h2>
-                <ul class="breadcrumbs-custom-path">
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active">Typography</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Base typography -->
-      <section class="section section-lg bg-default">
+
+      <section class="section section-lg section-main-bunner section-main-bunner-filter">
+        <!--<div class="main-bunner-img" style="background-image: url(&quot;images/bg-bunner-2.jpg&quot;); background-size: cover;"></div> -->
+         <div class="mp4"> <video src="./video/visual.mp4" autoplay muted playsinline loop></video></div>
+         <div class="main-bunner-inner">
+           <div class="container">
+             <div class="row row-50 justify-content-lg-center align-items-lg-center">
+               <div class="col-lg-12">
+                 <div class="bunner-content-modern text-center">
+                   <h1 class="main-bunner-title"></h1>
+                   <p></p>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+
+  
         <div class="container">
-          <div class="row row-50 flex-lg-row-reverse justify-content-xl-between">
-            <div class="col-xl-4">
-              <div class="block-bordered-left">
-                <div class="row row-40">
-                  <div class="col-sm-6 col-xl-12">
-                    <h5 class="thin-title">Fonts</h5>
-                    <h2 class="heading-font text-accent-3">henric</h2>
-                    <h3 class="heading-font">Poppins</h3>
-                    <h2 class="heading-font text-accent-2">Tuesday </h2>
-                  </div>
-                  <div class="col-sm-6 col-xl-12">
-                    <h5 class="thin-title">Colors</h5>
-                    <ul class="list-color">
-                      <li>
-                        <div class="box-color bg-primary"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-pink"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-secondary"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-green"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-secondary-2"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-gray-800"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-gray-400"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-gray-300"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-gray-600"></div>
-                      </li>
-                      <li>
-                        <div class="box-color bg-gray-700"></div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+        <div class="product-grid">
+            <div class="product">
+                <img src="images/imagenes/Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz.webp" alt="Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz">
+                <h2>Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz</h2>
+                <p>$200.000</p>
+                <button onclick='addToCart({name: "Celular tecnoMarket A23", price: 200.000, image: "images/imagenes/A23.jpeg"})'>Añadir al carrito</button>
             </div>
-            <div class="col-xl-7">
-              <ul class="list-xxl heading-list">
-                <li>
-                  <h1>H1 Heading</h1>
-                  <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.</p>
-                </li>
-                <li>
-                  <h2>H2 Heading</h2>
-                  <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.</p>
-                </li>
-                <li>
-                  <h3>H3 Heading</h3>
-                  <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.</p>
-                </li>
-                <li>
-                  <h4>H4 Heading</h4>
-                  <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.</p>
-                </li>
-                <li>
-                  <h5>H5 Heading</h5>
-                  <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.</p>
-                </li>
-                <li>
-                  <h6>H6 Heading</h6>
-                  <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.</p>
-                </li>
-              </ul>
+            <div class="product">
+                <img src="images/imagenes/Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb.webp" alt="Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb" width= "100px" height= "100px" padding= "10px;">
+                <h2>Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb</h2>
+                <p>$50.000</p>
+                <button onclick='addToCart({name: "Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb", price: 50.000, image: "images/imagenes/Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb.webp"})'>Añadir al carrito</button>
             </div>
-          </div>
+            <div class="product">
+                <img src="images/imagenes/Monitor Philips 19 Pulgadas Full Hd Color Negro.webp" alt="Monitor Philips 19 Pulgadas Full Hd Color Negro"  width= "100px" height= "100px" padding= "10px;">
+                <h2>Monitor Philips 19 Pulgadas Full Hd Color Negro</h2>
+                <p>$800.000</p>
+                <button onclick='addToCart({name: "Monitor Philips 19 Pulgadas Full Hd Color Negro", price: 800.000, image: "images/imagenes/Monitor Philips 19 Pulgadas Full Hd Color Negro.webp"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Mouse Genius Dx 110 Negro usb.png" alt="Mouse Genius Dx 110 Negro usb" width= "100px" height= "100px" padding= "10px;">
+                <h2>Mouse Genius Dx 110 Negro usb</h2>
+                <p>$10.000</p>
+                <button onclick='addToCart({name: "Mouse Genius Dx 110 Negro usb", price: 10.000, image: "images/imagenes/Mouse Genius Dx 110 Negro usb.png"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Mouse Logitech M110 Silent Red 2024.png" alt="Mouse Logitech M110 Silent Red 2024" width= "100px" height= "100px" padding= "10px;">
+                <h2>Mouse Logitech M110 Silent Red 2024</h2>
+                <p>$8.000</p>
+                <button onclick='addToCart({name: "Mouse Logitech M110 Silent Red 2024", price: 8.000, image: "images/imagenes/Mouse Logitech M110 Silent Red 2024.png"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So.webp" alt="Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So" width= "100px" height= "100px" padding= "10px;">
+                <h2>Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So</h2>
+                <p>$1.200.000</p>
+                <button onclick='addToCart({name: "Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So", price: 1.200000, image: "images/imagenes/Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So.webp"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h.webp" alt="Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h" width= "100px" height= "100px" padding= "10px;">
+                <h2>Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h</h2>
+                <p>$1.250.000</p>
+                <button onclick='addToCart({name: "Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h", price: 1.250000, image: "images/imagenes/Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h.webp"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6.webp" alt="Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6" width= "100px" height= "100px" padding= "10px;">
+                <h2>Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6</h2>
+                <p>$1.500.000</p>
+                <button onclick='addToCart({name: "Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6", price: 1.500000, image: "images/imagenes/Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6.webp"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home.webp" alt="Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home" width= "100px" height= "100px" padding= "10px;">
+                <h2>Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home</h2>
+                <p>$1.100.000</p>
+                <button onclick='addToCart({name: "Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home", price: 1.100000, image: "images/imagenes/Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home.webp"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11.jpg" alt="Auricular tecnoMarket i15" width= "100px" height= "100px" padding= "10px;">
+                <h2>Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC</h2>
+                <p>$800.000</p>
+                <button onclick='addToCart({name: "Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11", price: 800.000, image: "images/imagenes/Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11.jpg"})'>Añadir al carrito</button>
+            </div>            
+            <div class="product">
+                <img src="images/imagenes/Teclado Genius Numerico 1000 Wireless Black.png" alt="Teclado Genius Numerico 1000 Wireless Black" width= "100px" height= "100px" padding= "10px;">
+                <h2>RTeclado Genius Numerico 1000 Wireless Black</h2>
+                <p>$50.000</p>
+                <button onclick='addToCart({name: "Teclado Genius Numerico 1000 Wireless Black", price: 50.000, image: "images/imagenes/Teclado Genius Numerico 1000 Wireless Black.png"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Teclado Redragon K503 Harpe Pro Led RGB.png" alt="Teclado Redragon K503 Harpe Pro Led RGB" width= "100px" height= "100px" padding= "10px;">
+                <h2>Teclado Redragon K503 Harpe Pro Led RGB</h2>
+                <p>$120.000</p>
+                <button onclick='addToCart({name: "Teclado Redragon K503 Harpe Pro Led RGB", price: 120.000, image: "images/imagenes/Teclado Redragon K503 Harpe Pro Led RGB.png"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb 1600Mhz.png" alt="Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb 1600Mhz" width= "100px" height= "100px" padding= "10px;">
+                <h2>Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb</h2>
+                <p>$9.000</p>
+                <button onclick='addToCart({name: "Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb 1600Mhz", price: 9.000, image: "images/imagenes/Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb 1600Mhz.png"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS.png" alt="Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS" width= "100px" height= "100px" padding= "10px;">
+                <h2>Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 /h2>
+                <p>$22.000</p>
+                <button onclick='addToCart({name: "Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS", price: 22.000, image: "images/imagenes/Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS.png"})'>Añadir al carrito</button>
+            </div>
+            <div class="product">
+                <img src="images/imagenes/Disco Solido SSD 240Gb Kingston A400 Sata III.png" alt="Disco Solido SSD 240Gb Kingston A400 Sata III" width= "100px" height= "100px" padding= "10px;">
+                <h2>Disco Solido SSD 240Gb Kingston A400 Sata III</h2>
+                <p>$34.000</p>
+                <button onclick='addToCart({name: "Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS", price: 34.000, image: "images/imagenes/Disco Solido SSD 240Gb Kingston A400 Sata III.png"})'>Añadir al carrito</button>
+            </div>
+            
+            <!-- Añadir más productos según sea necesario -->
         </div>
-      </section>
-      <!-- HTML Text Elements-->
-      <section class="section section-lg bg-default">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-10">
-              <h3>HTML Text Elements</h3>
-              <p class="text-block">Welcome to our wonderful world. <span class="text-bold">This is a bold text </span>
-                <mark>This is a highlighted text</mark>We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. <span>With advanced features of activating account and new login</span><span class="tooltip-custom" data-toggle="tooltip" data-placement="top" title="Tooltips">Tooltips</span><span>widgets, you will definitely have a great experience of using our web page.</span><span class="text-strike">This is a strickethrough text </span><span class="text-underline">This is an underlined text.</span><a class="link-hover" href="#">Hover link</a><a class="link-active" href="#">Press link</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Unordered List-->
-      <section class="section section-lg bg-default">
-        <div class="container">
-          <div class="row row-50">
-            <div class="col-lg-6">
-              <h3>Ordered & Unordered Lists</h3>
-              <div class="row row-50">
-                <div class="col-sm-6">
-                  <ul class="list-marked">
-                    <li>High Professionalism</li>
-                    <li>Customer Service</li>
-                    <li>Innovation</li>
-                    <li>Ethics</li>
-                    <li>Management</li>
-                  </ul>
-                </div>
-                <div class="col-sm-6">
-                  <ol class="list-ordered">
-                    <li>High Professionalism</li>
-                    <li>Customer Service</li>
-                    <li>Innovation</li>
-                    <li>Ethics</li>
-                    <li>Management</li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Blockquote-->
-      <section class="section section-lg bg-default">
-        <div class="container">
-          <div class="row row-50">
-            <div class="col-lg-10 col-xl-8">
-              <h3>Blockquote</h3>
-              <!-- Quote Primary-->
-              <article class="quote-primary">
-                <div class="quote-primary-body">
-                  <div class="quote-primary-text">
-                    <p class="q">Morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, tristique senectus et netus et malesuada fames ac turpis egestas</p>
-                  </div>
-                </div>
-                <div class="quote-primary-footer">
-                  <div class="bg-dot"></div>
-                  <p class="quote-primary-cite">Jane Smith</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section><a class="section section-banner" href="https://www.templatemonster.com/website-templates/monstroid2.html" style="background-image: url(images/banner/background-03-1920x310.jpg); background-image: -webkit-image-set( url(images/banner/background-03-1920x310.jpg) 1x, url(images/banner/background-03-3840x620.jpg) 2x )" target="_blank"><img src="images/banner/foreground-03-1600x310.png" srcset="images/banner/foreground-03-1600x310.png 1x, images/banner/foreground-03-3200x620.png 2x" alt="" width="1600" height="310"></a>
+        <!--a href="carrito.html" class="cart-button">Ver carrito</a-->
+    </div>
+
+
+
+
+
+
+      <!--/section><a class="section section-banner" href="https://www.templatemonster.com/website-templates/monstroid2.html" style="background-image: url(images/banner/background-03-1920x310.jpg); background-image: -webkit-image-set( url(images/banner/background-03-1920x310.jpg) 1x, url(images/banner/background-03-3840x620.jpg) 2x )" target="_blank"><img src="images/banner/foreground-03-1600x310.png" srcset="images/banner/foreground-03-1600x310.png 1x, images/banner/foreground-03-3200x620.png 2x" alt="" width="1600" height="310"></a-->
       <!-- Page Footer-->
       <footer class="section footer-minimal context-dark">
         <div class="container wow-outer">
           <div class="wow fadeIn">
             <div class="row row-50 row-lg-60">
-              <div class="col-12"><a href="index.html"><img src="images/logo-inverse-415x103.png" alt="" width="207" height="51"/></a></div>
+              <div class="col-12"><a href="index.html"><img src="images/logo1.png" alt="" width="207" height="51"/></a></div>
               <div class="col-12">
                 <ul class="footer-minimal-nav">
                   <li><a href="about-us.html">About Us</a></li>
