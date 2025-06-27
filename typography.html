@@ -8,13 +8,43 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    
 
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,300i,400,500,600,700,800,900,900i%7CRoboto:400%7CRubik:100,400,700">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;} 
+    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}
+    
+            .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 15px;
+      }
+    
+      .social-icon {
+        font-size: 24px;
+        color: white;
+        transition: color 0.3s ease;
+      }
+    
+      .social-icon:hover {
+        color: #1da1f2; /* azul de Twitter como hover */
+      }
+    
+      .footer-title {
+        font-size: 18px;
+        color: white;
+        font-weight: 500;
+      }
+    
+      footer.section.footer-minimal {
+        background-color: #383737d2; /* oscuro elegante */
+        padding: 40px 0;
+      }
+      
         .container {
           width: 100%;
           padding: 40px 60px;
@@ -152,6 +182,20 @@
           max-width: 80px;
           max-height: 80px;
           border-radius: 8px;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        footer {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
+
+        html, body {
+          overflow-x: hidden;
         }
 
 
@@ -335,7 +379,7 @@
               </div>
             </div>
           </nav>
-        </div>
+      </div>
       </header>
 
       <section class="section section-lg section-main-bunner section-main-bunner-filter">
@@ -357,7 +401,7 @@
 
   
         <div class="container">
-        <div class="product-grid">
+          <div class="product-grid">
             <div class="product">
                 <img src="images/imagenes/Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz.webp" alt="Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz">
                 <h2>Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz</h2>
@@ -448,49 +492,22 @@
                 <p>$34.000</p>
                 <button onclick='addToCart({name: "Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS", price: 34.000, image: "images/imagenes/Disco Solido SSD 240Gb Kingston A400 Sata III.png"})'>Añadir al carrito</button>
             </div>
-            
+          </div>  
             <!-- Añadir más productos según sea necesario -->
         </div>
-        <!--a href="carrito.html" class="cart-button">Ver carrito</a-->
-    </div>
-
-
-
-
-
-
-      <!--/section><a class="section section-banner" href="https://www.templatemonster.com/website-templates/monstroid2.html" style="background-image: url(images/banner/background-03-1920x310.jpg); background-image: -webkit-image-set( url(images/banner/background-03-1920x310.jpg) 1x, url(images/banner/background-03-3840x620.jpg) 2x )" target="_blank"><img src="images/banner/foreground-03-1600x310.png" srcset="images/banner/foreground-03-1600x310.png 1x, images/banner/foreground-03-3200x620.png 2x" alt="" width="1600" height="310"></a-->
-      <!-- Page Footer-->
-      <footer class="section footer-minimal context-dark">
-        <div class="container wow-outer">
-          <div class="wow fadeIn">
-            <div class="row row-50 row-lg-60">
-              <div class="col-12"><a href="index.html"><img src="images/logo1.png" alt="" width="207" height="51"/></a></div>
-              <div class="col-12">
-                <ul class="footer-minimal-nav">
-                  <li><a href="about-us.html">About Us</a></li>
-                  <li><a href="#">Causes</a></li>
-                  <li><a href="#">Gallery</a></li>
-                  <li><a href="#">Team</a></li>
-                  <li><a href="contacts.html">Contacts</a></li>
-                </ul>
-              </div>
-              <div class="col-12">
-                <ul class="social-list">
-                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-facebook" href="#"></a></li>
-                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-instagram" href="#"></a></li>
-                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-twitter" href="#"></a></li>
-                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-youtube-play" href="#"></a></li>
-                  <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-pinterest-p" href="#"></a></li>
-                </ul>
-              </div>
-            </div>
-            <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Helper</span><span>.&nbsp;</span><span>All Rights Reserved.</span><span>&nbsp;</span>Design&nbsp;by&nbsp;<a href="https://www.templatemonster.com/">Templatemonster</a></p>
+        <footer class="section footer-minimal context-dark">                      
+          <h5>Síguenos en nuestras redes</h5>
+          <div class="social-icons" style="margin-top: 10px;">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
           </div>
-        </div>
+          <p style="margin-top: 20px; font-size: 14px;">&copy; 2025 SmartTech. Todos los derechos reservados.</p>            
       </footer>
     </div>
-    <div class="snackbars" id="form-output-global"></div>
+        
+    <div class="snackbars" id="form-output-global"></div>    
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
   </body>

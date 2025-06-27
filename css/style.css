@@ -947,6 +947,27 @@ a[href*='tel'], a[href*='mailto'] {
 /*
  * Box Causes
 */
+
+.box-causes-img {
+    width: 382px;      /* ancho fijo para que coincida con max-width de box-causes */
+    height: 300px;     /* altura fija igual para todas */
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.box-causes-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* recorta la imagen manteniendo proporción */
+    display: block;      /* elimina espacio extra debajo */
+}
+
+
+
+
+
+
 .box-causes {
 	max-width: 372px;
 	margin-left: auto;
@@ -954,11 +975,11 @@ a[href*='tel'], a[href*='mailto'] {
 	text-align: center;
 }
 
-.box-causes-img {
+/*.box-causes-img {
 	z-index: 1;
 	position: relative;
 	overflow: hidden;
-}
+}*/
 
 .box-causes-img:before {
 	content: '';
@@ -3689,8 +3710,8 @@ ul.blog-post-meta li .icon {
 }
 
 .footer-minimal {
-	height: 0px; /*agregado */
-	padding: 60px 0; /* padding: 60px 0;    original*/
+	height: 100px; /*agregado */
+	padding: 60px 100; /* padding: 60px 0;    original*/
 	text-align: center;
 	background: #343333;
 }
