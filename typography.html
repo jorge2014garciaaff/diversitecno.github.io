@@ -65,7 +65,7 @@
         .product-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;            
+            gap: 2px;            
             justify-content: space-around;
         }
         .product {
@@ -207,6 +207,49 @@
       footer.section.footer-minimal {
         background-color: #383737d2; /* oscuro elegante */
         padding: 30px 0;
+      }
+
+      /* para las barras laterales*/
+
+      .container-flex {
+        display: flex;
+        gap: 20px;
+        padding: 30px ;
+        background-color: #f5f5f5;
+      }
+
+      /* Filtros */
+      .sidebar {
+        width: 250px;
+        background-color: #fff;
+        padding: 20px 20px 20px 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        height: fit-content;
+      }
+
+      .sidebar h3 {
+        font-size: 18px;
+        color: #333;
+        margin-top: 20px;
+      }
+
+      .sidebar label {
+        display: block;
+        margin: 8px 0;
+        font-size: 15px;
+        color: #555;
+      }
+
+      .product-area {
+        flex: 1;
+      }
+
+      /*pen la barra lateral*/
+      .sidebar input[type="checkbox"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+        accent-color: #007bff;
       }
 
 
@@ -410,102 +453,105 @@
          </div>
        </section>
 
-  
-        <div class="container">
-          <div class="product-grid">
-            <div class="product">
-                <img src="images/imagenes/Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz.webp" alt="Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz">
-                <h2>Monitor 24 Hikvision Ds-d5024f2-av2 Fhd Vga Hdmi Va 100hz</h2>
-                <p>$200.000</p>
-                <button onclick='addToCart({name: "Celular tecnoMarket A23", price: 200.000, image: "images/imagenes/A23.jpeg"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb.webp" alt="Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb" width= "100px" height= "100px" padding= "10px;">
-                <h2>Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb</h2>
-                <p>$50.000</p>
-                <button onclick='addToCart({name: "Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb", price: 50.000, image: "images/imagenes/Monitor Gamer Aoc Curvo 32 Agon Iii 164hz Freesync Hdr10 Rgb.webp"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Monitor Philips 19 Pulgadas Full Hd Color Negro.webp" alt="Monitor Philips 19 Pulgadas Full Hd Color Negro"  width= "100px" height= "100px" padding= "10px;">
-                <h2>Monitor Philips 19 Pulgadas Full Hd Color Negro</h2>
-                <p>$800.000</p>
-                <button onclick='addToCart({name: "Monitor Philips 19 Pulgadas Full Hd Color Negro", price: 800.000, image: "images/imagenes/Monitor Philips 19 Pulgadas Full Hd Color Negro.webp"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Mouse Genius Dx 110 Negro usb.png" alt="Mouse Genius Dx 110 Negro usb" width= "100px" height= "100px" padding= "10px;">
-                <h2>Mouse Genius Dx 110 Negro usb</h2>
-                <p>$10.000</p>
-                <button onclick='addToCart({name: "Mouse Genius Dx 110 Negro usb", price: 10.000, image: "images/imagenes/Mouse Genius Dx 110 Negro usb.png"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Mouse Logitech M110 Silent Red 2024.png" alt="Mouse Logitech M110 Silent Red 2024" width= "100px" height= "100px" padding= "10px;">
-                <h2>Mouse Logitech M110 Silent Red 2024</h2>
-                <p>$8.000</p>
-                <button onclick='addToCart({name: "Mouse Logitech M110 Silent Red 2024", price: 8.000, image: "images/imagenes/Mouse Logitech M110 Silent Red 2024.png"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So.webp" alt="Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So" width= "100px" height= "100px" padding= "10px;">
-                <h2>Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So</h2>
-                <p>$1.200.000</p>
-                <button onclick='addToCart({name: "Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So", price: 1.200000, image: "images/imagenes/Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So.webp"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h.webp" alt="Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h" width= "100px" height= "100px" padding= "10px;">
-                <h2>Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h</h2>
-                <p>$1.250.000</p>
-                <button onclick='addToCart({name: "Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h", price: 1.250000, image: "images/imagenes/Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h.webp"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6.webp" alt="Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6" width= "100px" height= "100px" padding= "10px;">
-                <h2>Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6</h2>
-                <p>$1.500.000</p>
-                <button onclick='addToCart({name: "Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6", price: 1.500000, image: "images/imagenes/Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6.webp"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home.webp" alt="Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home" width= "100px" height= "100px" padding= "10px;">
-                <h2>Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home</h2>
-                <p>$1.100.000</p>
-                <button onclick='addToCart({name: "Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home", price: 1.100000, image: "images/imagenes/Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home.webp"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11.jpg" alt="Auricular tecnoMarket i15" width= "100px" height= "100px" padding= "10px;">
-                <h2>Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC</h2>
-                <p>$800.000</p>
-                <button onclick='addToCart({name: "Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11", price: 800.000, image: "images/imagenes/Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11.jpg"})'>Añadir al carrito</button>
-            </div>            
-            <div class="product">
-                <img src="images/imagenes/Teclado Genius Numerico 1000 Wireless Black.png" alt="Teclado Genius Numerico 1000 Wireless Black" width= "100px" height= "100px" padding= "10px;">
-                <h2>RTeclado Genius Numerico 1000 Wireless Black</h2>
-                <p>$50.000</p>
-                <button onclick='addToCart({name: "Teclado Genius Numerico 1000 Wireless Black", price: 50.000, image: "images/imagenes/Teclado Genius Numerico 1000 Wireless Black.png"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Teclado Redragon K503 Harpe Pro Led RGB.png" alt="Teclado Redragon K503 Harpe Pro Led RGB" width= "100px" height= "100px" padding= "10px;">
-                <h2>Teclado Redragon K503 Harpe Pro Led RGB</h2>
-                <p>$120.000</p>
-                <button onclick='addToCart({name: "Teclado Redragon K503 Harpe Pro Led RGB", price: 120.000, image: "images/imagenes/Teclado Redragon K503 Harpe Pro Led RGB.png"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb 1600Mhz.png" alt="Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb 1600Mhz" width= "100px" height= "100px" padding= "10px;">
-                <h2>Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb</h2>
-                <p>$9.000</p>
-                <button onclick='addToCart({name: "Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb 1600Mhz", price: 9.000, image: "images/imagenes/Memoria Ram Notebook Hiksemi Hiker DDR3 4Gb 1600Mhz.png"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS.png" alt="Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS" width= "100px" height= "100px" padding= "10px;">
-                <h2>Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 /h2>
-                <p>$22.000</p>
-                <button onclick='addToCart({name: "Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS", price: 22.000, image: "images/imagenes/Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS.png"})'>Añadir al carrito</button>
-            </div>
-            <div class="product">
-                <img src="images/imagenes/Disco Solido SSD 240Gb Kingston A400 Sata III.png" alt="Disco Solido SSD 240Gb Kingston A400 Sata III" width= "100px" height= "100px" padding= "10px;">
-                <h2>Disco Solido SSD 240Gb Kingston A400 Sata III</h2>
-                <p>$34.000</p>
-                <button onclick='addToCart({name: "Disco Solido SSD 256Gb Hiksemi M2 Wave Pro 2280 PCIE 3.0 3520MBPS", price: 34.000, image: "images/imagenes/Disco Solido SSD 240Gb Kingston A400 Sata III.png"})'>Añadir al carrito</button>
-            </div>
-          </div>  
+        <div class="container-flex">
+          <!-- Filtros a la izquierda -->
+          <aside class="sidebar">
+
+            <h3>Opciones de envío</h3>
+
+            <label>
+              <input type="checkbox" id="envio-gratis" />
+              Envío Gratis
+            </label>
+
+            <label>
+              <input type="checkbox" id="envio-internacional" />
+              Envíos Internacionales
+            </label>
+
+            <h3>Procesador</h3>
+            <label><input type="checkbox" /> Intel Core i3</label>
+            <label><input type="checkbox" /> Intel Core i5</label>
+            <label><input type="checkbox" /> AMD Ryzen 5</label>
+            <label><input type="checkbox" /> AMD Ryzen 3</label>
+            <label><input type="checkbox" /> Intel Celeron</label>
+            <label><input type="checkbox" /> Snapdragon</label>
+            <!-- Agregá más según necesites -->
+          
+            <h3>Marca</h3>
+            <label><input type="checkbox" /> HP</label>
+            <label><input type="checkbox" /> Lenovo</label>
+            <label><input type="checkbox" /> ASUS</label>
+            <label><input type="checkbox" /> Enova</label>
+            <label><input type="checkbox" /> Banghó</label>
+            <!-- Más marcas... -->
+          </aside>
+        
+          <!-- Productos a la derecha (ya tenés esta parte) -->
+          <div class="product-area">
+            <div class="product-grid">
+              <!-- Aquí va todo el bloque de productos que ya hiciste -->
+              <div class="container">
+                <div class="product-grid">
+                  
+                  <div class="product">
+                      <img src="images/imagenes/Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So.webp" alt="Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So" width= "100px" height= "100px" padding= "10px;">
+                      <h2>Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So</h2>
+                      <p>$1.200.000</p>
+                      <button onclick='addToCart({name: "Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So", price: 1200000, image: "images/imagenes/Notebook Banghó Max L5 16gb 480gb Ssd Intel I7 1255u Sin So.webp"})'>Añadir al carrito</button>
+                  </div>
+                  <div class="product">
+                      <img src="images/imagenes/Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h.webp" alt="Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h" width= "100px" height= "100px" padding= "10px;">
+                      <h2>Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h</h2>
+                      <p>$1.250.000</p>
+                      <button onclick='addToCart({name: "Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h", price: 1250000, image: "images/imagenes/Notebook Hp 15-dy5000la Core I5-1235u 8gb 512gb 15.6 Hd W11h.webp"})'>Añadir al carrito</button>
+                  </div>
+                  <div class="product">
+                      <img src="images/imagenes/Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6.webp" alt="Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6" width= "100px" height= "100px" padding= "10px;">
+                      <h2>Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6</h2>
+                      <p>$1.500.000</p>
+                      <button onclick='addToCart({name: "Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6", price: 1500000, image: "images/imagenes/Notebook Hp 15z-ef3000 Amd Ryzen 5 5625u 8gb 256gb W11 15.6.webp"})'>Añadir al carrito</button>
+                  </div>
+                  <div class="product">
+                      <img src="images/imagenes/Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home.webp" alt="Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home" width= "100px" height= "100px" padding= "10px;">
+                      <h2>Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home</h2>
+                      <p>$1.100.000</p>
+                      <button onclick='addToCart({name: "Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home", price: 1100000, image: "images/imagenes/Notebook Hp 255 G10 15.6 Ryzen 3 7330u 8gb 512gb W11 Home.webp"})'>Añadir al carrito</button>
+                  </div>
+                  <div class="product">
+                      <img src="images/imagenes/Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11.jpg" alt="Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC" width= "100px" height= "100px" padding= "10px;">
+                      <h2>Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC</h2>
+                      <p>$800.000</p>
+                      <button onclick='addToCart({name: "Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11", price: 800000, image: "images/imagenes/Notebook Asus E410MA Intel Celeron N4020 4Gb 128Gb EMMC 14 HD W11.jpg"})'>Añadir al carrito</button>
+                  </div>            
+                  <div class="product">
+                      <img src="images/imagenes/Lenovo ThinkPad T16 3er Gen (16”, Intel).avif" alt="Lenovo ThinkPad T16 3er Gen (16”, Intel)" width= "100px" height= "100px" padding= "10px;">
+                      <h2>Lenovo ThinkPad T16 3er Gen (16”, Intel)</h2>
+                      <p>$2.400.000</p>
+                      <button onclick='addToCart({name: "Lenovo ThinkPad T16 3er Gen (16”, Intel)", price: 2400000, image: "images/imagenes/Lenovo ThinkPad T16 3er Gen (16”, Intel).avif"})'>Añadir al carrito</button>
+                  </div>            
+                  <div class="product">
+                      <img src="images/imagenes/Lenovo Yoga Slim 7x Gen 9 (14” Snapdragon).avif" alt="Lenovo Yoga Slim 7x Gen 9 (14” Snapdragon)" width= "100px" height= "100px" padding= "10px;">
+                      <h2>Lenovo Yoga Slim 7x Gen 9 (14” Snapdragon)</h2>
+                      <p>$2.300.000</p>
+                      <button onclick='addToCart({name: "Lenovo Yoga Slim 7x Gen 9 (14” Snapdragon)", price: 2300000, image: "images/imagenes/Lenovo Yoga Slim 7x Gen 9 (14” Snapdragon).avif"})'>Añadir al carrito</button>
+                  </div>            
+                  <div class="product">
+                      <img src="images/imagenes/Notebook Enova Amd Ryzen 5 3000 Series Windows 11.jpg" alt="Enova Amd Ryzen 5 3000 Series Windows 11" width= "100px" height= "100px" padding= "10px;">
+                      <h2>Enova Amd Ryzen 5 3000 Series Windows 11</h2>
+                      <p>$700.000</p>
+                      <button onclick='addToCart({name: "Enova Amd Ryzen 5 3000 Series Windows 11", price: 700000, image: "images/imagenes/Notebook Enova Amd Ryzen 5 3000 Series Windows 11.jpg"})'>Añadir al carrito</button>
+                  </div>            
+            
+            </div>  
             <!-- Añadir más productos según sea necesario -->
         </div>
+            </div>
+          </div>
+        </div>
+
+  
+        
         <footer class="section footer-minimal context-dark">                      
           <h4 class="footer-title">Síguenos en nuestras redes sociales</h4>
           <div class="social-icons" style="margin-top: 10px;">
