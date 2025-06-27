@@ -43,6 +43,64 @@
         padding: 30px 0;
       }
 
+      /*la parte de explorar*/
+    .explorar {
+      background-color: rgba(255, 255, 255, 0.114);
+      padding: 30px 80px 20px 80px; /* top, right, bottom, left */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 60px; /* <<< ESTE ES EL NUEVO ESPACIADO */
+      padding-bottom: 20px;
+    }
+
+
+    .explorar h3 {
+      padding-bottom: 20px;
+      font-size: 40px;
+      margin-bottom: 40px; /* Aumenta o ajusta este valor a tu gusto */
+       text-align: center;
+    }
+
+
+    .iconos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px 80px; /* Aumentamos el espaciado: 60px vertical, 80px horizontal */
+    }
+
+    .icono {
+      text-align: center;
+      width: 100px;
+    }
+
+    .icono img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+      filter: invert(0); /* asegúrate que los íconos se vean negros (borde) */
+    }
+
+    .icono p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .icono-link {
+      text-decoration: none; /* para que el texto no se subraye */
+      color: black; /* color inicial */
+      display: inline-block;
+    }
+
+    .icono-link:hover p {
+      color: green;
+    }
+
+    .icono-link:hover img {
+      filter: hue-rotate(90deg) saturate(3); /* cambia el color del icono a verde más o menos */
+      /* o puedes usar un filtro específico para verde o un reemplazo de imagen */
+      /* otra opción es usar CSS fill si los iconos fueran SVG */
+    }
+
 
     </style>
   </head>
@@ -109,7 +167,49 @@
           </div>
         </div>
       </section>
-            <section class="section section-lg bg-gray-1">
+      <section class="section section-lg bg-gray-1">        
+        <div class="explorar">
+          <h3>Explorar</h3>
+          <div class="iconos">
+            <a href="#" class="icono-link">
+              <div class="icono">
+                <img src="https://img.icons8.com/ios/50/laptop--v1.png" alt="PCs & Tablets">
+                <p>PC </p>
+              </div>
+            </a>
+            <a href="#" class="icono-link">
+              <div class="icono">
+                <img src="https://img.icons8.com/ios/50/smartphone-tablet.png" alt="Celulares">
+                <p>Celulares</p>
+              </div>
+            </a>
+            <a href="#" class="icono-link">
+              <div class="icono">
+                <img src="https://img.icons8.com/ios/50/server.png" alt="Servidores">
+                <p>Servidores</p>
+              </div>
+            </a>
+            <a href="servicios.html" class="icono-link">
+              <div class="icono">
+                <img src="https://img.icons8.com/ios/50/services.png" alt="Servicios">
+                <p>Servicios</p>
+              </div>
+            </a>
+            <a href="#" class="icono-link">
+              <div class="icono">
+                <img src="https://img.icons8.com/ios/50/headphones.png" alt="Soporte">
+                <p>Soporte</p>
+              </div>
+            </a>      
+            <a href="#" class="icono-link">
+              <div class="icono">
+                <img src="https://img.icons8.com/ios/50/price-tag--v1.png" alt="Ofertas">
+                <p>Ofertas</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <div class="container">
           <div class="row justify-content-center text-center">
             <div class="col-md-9 col-lg-7 wow-outer">
@@ -147,56 +247,6 @@
                   <h4 class="font-weight-medium"><a href="#">Gaming</a></h4>                  
                   </p>
                 </article>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section section-xl">
-        <div class="container">
-          <div class="row row-50 justify-content-lg-between align-items-lg-center">
-            <div class="col-lg-6">
-              <div class="box-img-animate">
-                <div class="box-img-animate-item" data-parallax-scroll="{&quot;y&quot;: 0, &quot;x&quot;: 140,  &quot;smoothness&quot;: 50 }"><img src="images/1-programador.jpg" alt=""></div>
-                <div class="box-img-animate-item" data-parallax-scroll="{&quot;y&quot;: 150, &quot;x&quot;: 0,  &quot;smoothness&quot;: 50 }"><img src="images/2-disenador.jpg" alt=""></div>
-                <div class="box-img-animate-item" data-parallax-scroll="{&quot;y&quot;:70, &quot;x&quot;: -250,  &quot;smoothness&quot;: 50 }"><img src="images/3-llamada.jpg" alt=""></div>
-                <div class="box-img-animate-item" data-parallax-scroll="{&quot;y&quot;:20, &quot;x&quot;: 20,  &quot;smoothness&quot;: 50 }"><img src="images/4-lectura.jpg" alt=""></div>
-                <div class="box-img-animate-item" data-parallax-scroll="{&quot;y&quot;:60, &quot;x&quot;: 70,  &quot;smoothness&quot;: 50 }"><img src="images/5-medico.jpg" alt=""></div>
-                <div class="box-img-animate-item" data-parallax-scroll="{&quot;y&quot;:0, &quot;x&quot;: 140,  &quot;smoothness&quot;: 50 }"><img src="images/6-datos.jpg" alt=""></div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-xl-5">
-              <div class="innset-xl-left-70">              
-                <p class="text-opacity-80">Te ofrecemos mas que un simple producto</p>
-                <div class="row row-50">
-                  <div class="col-md-6 col-lg-12">
-                    <div class="box-icon-modern">
-                      <div class="box-icon-inner decorate-triangle"><img src="images/icono-armado.png" alt="" width="70" height="70"/></div>
-                      <div class="box-icon-caption">
-                        <h4><a href="#">PC Smart Builder</a></h4>
-                        <p>Armamos tu PC ideal.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-12">
-                    <div class="box-icon-modern">
-                      <div class="box-icon-inner decorate-circle"><img src="images/icono-tiempo.png" alt="" width="90" height="90"/></div>
-                      <div class="box-icon-caption">
-                        <h4><a href="#">SmartShop</a></h4>
-                        <p>Consulta, compara y gestiona tu compra sin esperar.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-12">
-                    <div class="box-icon-modern">
-                      <div class="box-icon-inner decorate-rectangle"><img src="images/icono-reparacion2.png" alt="" width="70" height="70"/></div>
-                      <div class="box-icon-caption">
-                        <h4><a href="#">Soporte Postventa</a></h4>
-                        <p>Cualquier incoveniente, lo solucionamos.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
