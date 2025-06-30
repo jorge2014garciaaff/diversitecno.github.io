@@ -1,0 +1,71 @@
+.ie-panel {
+    display: none;
+    background: #212121;
+    padding: 10px 0;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+    clear: both;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+html.ie-10 .ie-panel,
+html.lt-ie-10 .ie-panel {
+    display: block;
+}
+
+.explorar {
+    background-color: rgba(255, 255, 255, 0.114);
+    padding: 30px 80px 20px 80px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+}
+
+
+.explorar h3 {
+    padding-bottom: 20px;
+    font-size: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+.iconos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px 80px;
+    justify-content: center;
+}
+
+.icono {
+    text-align: center;
+    width: 100px;
+}
+
+.icono img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    filter: invert(0);
+}
+
+.icono p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.icono-link {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+}
+
+.icono-link:hover p {
+    color: green;
+}
+
+.icono-link:hover img {
+    filter: hue-rotate(90deg) saturate(3);
+}

@@ -3710,10 +3710,7 @@ ul.blog-post-meta li .icon {
 }
 
 .footer-minimal {
-	height: 100px; /*agregado */
-	padding: 60px 100; /* padding: 60px 0;    original*/
 	text-align: center;
-	background: #343333;
 }
 
 @media (min-width: 992px) {
