@@ -334,8 +334,10 @@ ul.conat_info li a:hover {
      padding: 300px 0px 0px 0px;
      background-size: auto 78%;
      background-repeat: no-repeat;
-     min-height: 1150px;
+     min-height: 100px;
      background-position: right top;
+     position: relative;
+     bottom: 50px;
 }
 
 .text-bg {
