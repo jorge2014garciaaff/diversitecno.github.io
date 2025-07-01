@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Comparar Productos</title>
+    <link rel="stylesheet" href="smartshop.css" />
+    <style>
+        #notification {
+            position: fixed;
+            top: 10px; right: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 9999;
+            font-weight: bold;
+        }
+        #notification.show {
+            display: block;
+        }
+        #notification.success {
+            background-color: #4caf50;
+            color: white;
+        }
+        #notification.error {
+            background-color: #f44336;
+            color: white;
+        }
+        .product-card {
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: center;
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Comparar Productos</h1>
+    </header>
+
+    <div id="comparar-list"></div>
+    <div id="comparacion-result"></div>
+
+    <button onclick="location.href='smartshop.html'">Volver al Menú</button>
+    <div id="notification" class="hidden"></div>
+
+    <script src="functions.js"></script>
+    <script>
+    const container = document.getElementById('comparar-list');
+    let html = '';
+    window.products.forEach(p => {
+        html += `
+            <div class="product-card">
+                <h3>${p.name}</h3>
+                <img src="${p.image}" alt="${p.name}" width="150" style="display:block; margin-bottom:10px;">
+                <p>${p.features}</p>
+                <p>Precio: $${p.price}</p>
+                <p>⭐ ${p.rating}</p>
+                <label><input type="checkbox" class="compare-checkbox" value="${p.id}"> Comparar</label>
+            </div>
+        `;
+    });
+    html += `<br><button onclick="compare()">Comparar</button>`;
+    container.innerHTML = html;
+
+    function compare() {
+        const checked = Array.from(document.querySelectorAll('.compare-checkbox:checked')).map(c => parseInt(c.value));
+        const result = document.getElementById('comparacion-result');
+        if (checked.length < 2) {
+            showNotification('Selecciona al menos dos productos', 'error');
+            return;
+        }
+        let tableHtml = '<h3>Comparación</h3><table><tr><th>Producto</th><th>Imagen</th><th>Precio</th><th>Características</th><th>Rating</th></tr>';
+        checked.forEach(id => {
+            const p = window.products.find(prod => prod.id === id);
+            tableHtml += `
+                <tr>
+                    <td>${p.name}</td>
+                    <td><img src="${p.image}" alt="${p.name}" width="100"></td>
+                    <td>$${p.price}</td>
+                    <td>${p.features}</td>
+                    <td>⭐ ${p.rating}</td>
+                </tr>
+            `;
+        });
+        tableHtml += '</table>';
+        result.innerHTML = tableHtml;
+    }
+</script>
+
+</body>
+</html>

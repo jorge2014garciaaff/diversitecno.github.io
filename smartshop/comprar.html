@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizar Compra</title>
+    <link rel="stylesheet" href="smartshop.css">
+</head>
+<body>
+
+<header>
+    <h1>Realizar Compra</h1>
+</header>
+
+<div id="comprar-list"></div>
+<div id="cart-summary"></div>
+
+<button onclick="finalizarCompra()">Finalizar Compra</button>
+<button onclick="location.href='smartshop.html'">Volver al Menú</button>
+
+<div id="notification"></div>
+
+<script src="functions.js"></script>
+<script>
+    const container = document.getElementById('comprar-list');
+
+    // Renderizado de productos
+    products.forEach(p => {
+        container.innerHTML += `
+            <div class="product-card">
+                <img src="${p.image}" alt="${p.name}">
+                <h3>${p.name}</h3>
+                <p>Precio: $${p.price}</p>
+                <button onclick="addToCart(${p.id})">Agregar al carrito</button>
+            </div>
+        `;
+    });
+
+    updateCart();
+</script>
+
+</body>
+</html>
