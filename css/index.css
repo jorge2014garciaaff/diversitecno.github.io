@@ -22,7 +22,7 @@
 .smart-shop-text {
     width: 45%;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: lighter;
     color: black;
 }
 
@@ -51,6 +51,6 @@
 .smart-shop-step-text {
     width: 50%;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: lighter;
     color: black;
 }
