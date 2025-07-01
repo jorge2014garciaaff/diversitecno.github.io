@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Consulta de Productos</title>
+    <link rel="stylesheet" href="smartshop.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #fafafa;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: white;
+        }
+        .product-card img {
+            max-width: 150px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .product-info {
+            flex-grow: 1;
+        }
+        .product-info h3 {
+            margin-top: 0;
+        }
+        .rating {
+            color: #f5a623;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        button {
+            background-color: #7b68ee;
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #5a4bd1;
+        }
+        #detail-panel {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #7b68ee;
+            border-radius: 10px;
+            max-width: 700px;
+            background: #f7f7ff;
+            box-shadow: 0 2px 10px rgba(123, 104, 238, 0.3);
+        }
+        #detail-panel img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        #detail-panel h2 {
+            margin-top: 0;
+        }
+        #detail-panel ul {
+            list-style: disc inside;
+            margin-top: 10px;
+        }
+        #detail-panel button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Consulta de Productos</h1>
+</header>
+
+<div id="consulta-list"></div>
+
+<div id="detail-panel" style="display:none;"></div>
+
+<button onclick="location.href='smartshop.html'">Volver al Menú</button>
+<div id="notification" class="hidden"></div>
+
+<script src="functions.js"></script>
+<script>
+    const container = document.getElementById('consulta-list');
+    const detailPanel = document.getElementById('detail-panel');
+
+    window.products.forEach(p => {
+        container.innerHTML += `
+            <div class="product-card">
+                <img src="${p.image}" alt="${p.name}" />
+                <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <p><strong>Precio:</strong> $${p.price}</p>
+                    <p class="rating">⭐ ${p.rating}</p>
+                    <p><strong>Características:</strong> ${p.features}</p>
+                    <p><strong>Reseñas:</strong></p>
+                    <ul>
+                        ${p.reviews.map(r => `<li>${r}</li>`).join('')}
+                    </ul>
+                    <button onclick="showDetail(${p.id})">Ver detalle</button>
+                </div>
+            </div>
+        `;
+    });
+
+    function showDetail(id) {
+        const p = window.products.find(prod => prod.id === id);
+        if (!p) return;
+
+        detailPanel.innerHTML = `
+            <h2>${p.name}</h2>
+            <img src="${p.image}" alt="${p.name}" />
+            <p><strong>Precio:</strong> $${p.price}</p>
+            <p><strong>Características:</strong> ${p.features}</p>
+            <p class="rating"><strong>Rating:</strong> ⭐ ${p.rating}</p>
+            <p><strong>Reseñas:</strong></p>
+            <ul>
+                ${p.reviews.map(r => `<li>${r}</li>`).join('')}
+            </ul>
+            <button onclick="closeDetail()">Cerrar detalle</button>
+        `;
+        detailPanel.style.display = 'block';
+        detailPanel.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function closeDetail() {
+        detailPanel.style.display = 'none';
+        detailPanel.innerHTML = '';
+    }
+</script>
+
+</body>
+</html>
