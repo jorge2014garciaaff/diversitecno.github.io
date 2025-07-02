@@ -1950,7 +1950,7 @@ input, select, textarea {
 
 				body:not(.is-touch) .tiles article:hover > .image:before {
 					background-color: #333333;
-					opacity: 0.35;
+					opacity: 0.85;
 				}
 
 				body:not(.is-touch) .tiles article:hover > .image:after {
@@ -1960,6 +1960,8 @@ input, select, textarea {
 			body:not(.is-touch) .tiles article:hover .content {
 				max-height: 15em;
 				opacity: 1;
+				text-shadow: 1px 1px 2px black;
+				
 			}
 
 		* + .tiles {
